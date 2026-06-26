@@ -1,0 +1,23 @@
+counter = 0
+d = {}
+
+import csv
+with open(r"C:\Users\Markus\PycharmProjects\Testgelände\names.csv", encoding="utf-8") as csvfile:
+    csv_reader_object = csv.DictReader(csvfile)
+
+    for line in csv_reader_object:
+        name = line["Name"]
+
+        if name in d:
+            d[name] += int(line["Count"])
+        else:
+            d[name] = int(line["Count"])
+
+    for key, value in d.items():
+        if value > counter:
+            counter = value
+            name = key
+        else:
+            continue
+    print(name)
+    print(counter)
